@@ -14,7 +14,8 @@
 		"--security-opt=apparmor:unconfined",
 		"--volume=/tmp/.X11-unix:/tmp/.X11-unix"
 	],
-	"containerEnv": { "DISPLAY": "${localEnv:DISPLAY}" },
+	"containerEnv": { "DISPLAY": "${localEnv:DISPLAY:0}" },
+	// "containerEnv": { "DISPLAY": "$(awk '/nameserver / {print $2; exit}' /etc/resolv.conf 2>/dev/null):0" },
 	// Set *default* container specific settings.json values on container create.
 	"settings": {
 		"terminal.integrated.profiles.linux": {

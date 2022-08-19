@@ -1,7 +1,7 @@
-FROM althack/ros2:foxy-dev 
+FROM althack/ros2:foxy-gazebo-nvidia 
 
 # ** [Optional] Uncomment this section to install additional packages. **
-#
+# 
 # ENV DEBIAN_FRONTEND=noninteractive
 # RUN apt-get update \
 #    && apt-get -y install --no-install-recommends <your-package-list-here> \
@@ -13,5 +13,7 @@ FROM althack/ros2:foxy-dev
 # ENV DEBIAN_FRONTEND=dialog
 
 # Set up auto-source of workspace for ros user
+ENV DISPLAY=:0
+ENV TURTLEBOT3_MODEL=waffle_pi
 ARG WORKSPACE
 RUN echo "if [ -f ${WORKSPACE}/install/setup.bash ]; then source ${WORKSPACE}/install/setup.bash; fi" >> /home/ros/.bashrc
